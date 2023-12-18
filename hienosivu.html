@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+            
+    body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+
+    
+
+}
+
+#koko {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    
+}
+
+#btn1 {
+  background-color: lightblue;
+  border-radius: 20px;
+  border-style: dashed;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  position: absolute;
+  left: 600px;
+}
+
+#btn2 {
+  background-color: lightblue;
+  border-radius: 20px;
+  border-style: dashed;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  position: absolute;
+  right: 600px;
+}
+
+#lol {
+background-color: lightblue;
+  border-radius: 2px;
+  border-style: solid;
+  color: white;
+  padding: 15px 32px;
+  font-size: 16px;
+  position: absolute;
+  left: 870px;
+  bottom: 500px;;
+}
+
+    </style>
+ 
+<head>
+        <title>lol</title>
+        </head>
+        <body>
+        <div id="koko">
+        <h1>mikä sun lempi eläin on😺🐶</h1>
+        <p>vasta tähään alas:</p>
+        <input type="text" id="animal" placeholder="esim. kissa/koira">
+        </div>
+        <button id="lol" onclick="wrongBtn()">kato mitä mulle käy kun painat nappei</button>
+        <button id="btn2">kutista napin koko!</button>
+        <button id="btn1">tuplaa napin koko!</button>
+       
+     
+        <script>
+
+                
+var animalInput = document.getElementById("animal");
+animalInput.addEventListener("input", function() {
+  var animal = animalInput.value.toLowerCase();
+  if (animal === "kissa") {
+    document.body.style.backgroundImage = "url('https://i.ibb.co/njThSyZ/Safeimagekit-resized-img.png')";
+  } else if (animal === "koira") {
+    document.body.style.backgroundImage = "url('https://i.ibb.co/Sm5C6ZF/Safeimagekit-resized-img-1.png')";
+  } else {
+    document.body.style.backgroundImage = "";
+  }
+});
+
+function doubleBtnSize() {
+	var button = document.getElementsByTagName("button")[0];
+	var currentWidth = button.offsetWidth;
+	var currentHeight = button.offsetHeight;
+	button.style.width = (currentWidth * 2) + "px";
+	button.style.height = (currentHeight * 2) + "px";
+	}
+
+function decreaseBtnSize() {
+	var button = document.getElementsByTagName("button")[0];
+	var currentWidth = button.offsetWidth;
+	var currentHeight = button.offsetHeight;
+	button.style.width = (currentWidth / 2) + "px";
+	button.style.height = (currentHeight / 2) + "px";
+	}
+
+function wrongBtn () {
+        alert("moro älä paina mua")
+}
+
+document.getElementById("btn1").addEventListener("click", doubleBtnSize);
+document.getElementById("btn2").addEventListener("click", decreaseBtnSize);
+        </script>
+
+        <script src="/js/script.js"></script>
+        </body>
+        </html>

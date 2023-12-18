@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.cdnfonts.com/css/modern-sans" rel="stylesheet">
+    <link rel="stylesheet" href="stylesS.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body {
+            font-family: 'Modern Sans', sans-serif;
+            text-align: center;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+
+        #journal-entries {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .button {
+            font-family: 'Modern Sans', sans-serif;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button:active {
+            background-color: #004080;
+            transform: translateY(1px);
+        }
+    
+    </style>
+</head>
+<body>
+    <h1>Työpäiväkirja</h1>
+    <h1>kirjoitan myöhemmin tarkemmat tiedot päivistä</h1>
+    <div id="journal-entries"></div>
+    <button id="prev-day" class="button">Edellinen päivä</button>
+    <button id="next-day" class="button">Seuraava päivä</button>
+
+    <script>
+        // JavaScript code
+        const journalEntries = [
+  { date: "17.8.2023", content: "Sain kaikki käyttäjätunnukset ja muut asiat haltuun. Aloitin myös suunnittelemaan intranetin designia." },
+  { date: "18.8.2023", content: "Aloitin intranetin tekemisen." },
+  { date: "21.8.2023", content: "Intranetin ekaa mallia tekemistä." },
+  { date: "22.8.2023", content: "Intranetin tekemistä." },
+  { date: "23.8.2023", content: "Intranetin tekemistä." },
+  { date: "24.8.2023", content: "Intranetin tekemistä." },
+  { date: "25.8.2023", content: "Intranetin tekemistä." },
+  { date: "28.8.2023", content: "Intranetin tekemistä." },
+  { date: "29.8.2023", content: "Aloitin nyt suunnittelemaan kunnon viimeistä sivua (valmista sivua)." },
+  { date: "30.8.2023", content: "Intranetin tekemistä" },
+  { date: "31.8.2023", content: "Intranetin tekemistä" },
+  { date: "1.9.2023", content: "Intranetin tekemistä" },
+  { date: "4.9.2023", content: "Intranetin tekemistä" },
+  { date: "5.9.2023", content: "Intranetin tekemistä" },
+  { date: "6.9.2023", content: "Intranetin tekemistä" },
+  { date: "7.9.2023", content: "Intranetin tekemistä" },
+  { date: "8.9.2023", content: "Intranetin tekemistä" },
+  { date: "11.9.2023", content: "Intranetin tekemistä" },
+  { date: "12.9.2023", content: "Intranetin tekemistä" },
+  { date: "13.9.2023", content: "Intranetin tekemistä" },
+  { date: "14.9.2023", content: "Intranetin tekemistä" },
+  { date: "15.9.2023", content: "Intranetin tekemistä" },
+  { date: "18.9.2023", content: "Intranetin tekemistä" },
+  { date: "19.9.2023", content: "Intranetin tekemistä" },
+  { date: "20.9.2023", content: "Intranetin tekemistä" },
+  { date: "21.9.2023", content: "Intranetin tekemistä" },
+  { date: "22.9.2023", content: "Intranetin tekemistä" },
+  { date: "25.9.2023", content: "Intranetin tekemistä" },
+  { date: "26.9.2023", content: "Intranetin tekemistä" },
+  { date: "27.9.2023", content: "Intranetin tekemistä" },
+  { date: "28.9.2023", content: "Intranetin tekemistä" },
+  { date: "29.9.2023", content: "Intranetin tekemistä" },
+  { date: "2.10.2023", content: "Intranetin tekemistä" },
+  { date: "3.10.2023", content: "Intranetin tekemistä" },
+  { date: "4.10.2023", content: "Intranetin tekemistä" },
+{ date: "5.10.2023", content: "Intranetin tekemistä" },
+{ date: "6.10.2023", content: "Intranetin tekemistä" },
+ { date: "9.10.2023", content: "Intranetin tekemistä" },
+            { date: "10.10.2023", content: "Intranetin tekemistä" },
+            { date: "11.10.2023", content: "Intranetin tekemistä" },
+            { date: "12.10.2023", content: "näyttö" },
+            { date: "13.10.2023", content: "itkin kun en saanut 5" }
+        ];
+
+ 
+        let currentDay = 0;
+
+        const journalContainer = document.getElementById("journal-entries");
+        journalContainer.innerHTML = `
+            <h2>${journalEntries[currentDay].date}</h2>
+            <p>${journalEntries[currentDay].content}</p>
+        `;
+
+        const prevButton = document.getElementById("prev-day");
+        prevButton.addEventListener("click", () => {
+            if (currentDay > 0) {
+                currentDay--;
+                journalContainer.innerHTML = `
+                    <h2>${journalEntries[currentDay].date}</h2>
+                    <p>${journalEntries[currentDay].content}</p>
+                `;
+            }
+        });
+
+        const nextButton = document.getElementById("next-day");
+        nextButton.addEventListener("click", () => {
+            if (currentDay < journalEntries.length - 1) {
+                currentDay++;
+                journalContainer.innerHTML = `
+                    <h2>${journalEntries[currentDay].date}</h2>
+                    <p>${journalEntries[currentDay].content}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
